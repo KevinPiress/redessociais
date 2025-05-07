@@ -1,166 +1,130 @@
-:root {
-    --cor-fundo: #1a1a2e; /* Azul noite escuro */
-    --cor-container: #16213e; /* Azul um pouco mais claro */
-    --cor-texto-principal: #e0e0e0; /* Cinza claro */
-    --cor-texto-secundario: #a0a0a0; /* Cinza mais escuro */
-    --cor-destaque: #00c6ff; /* Azul ciano vibrante para botões */
-    --cor-destaque-hover: #00a5dd; /* Tom mais escuro do ciano para hover */
-
-    /* Cores específicas para redes (opcional, pode usar --cor-destaque para todos) */
-    --cor-instagram: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
-    --cor-tiktok: #000000; /* Preto TikTok */
-    --cor-tiktok-texto: #ffffff;
-    --cor-youtube: #FF0000; /* Vermelho YouTube */
-    --cor-twitter: #1DA1F2; /* Azul Twitter */
-    --cor-whatsapp: #25D366; /* Verde WhatsApp */
-    --cor-linkedin: #0077B5; /* Azul LinkedIn */
-    --cor-generico: var(--cor-destaque);
-}
-
-* {
+/* Reset básico e estilos gerais */
+body {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
-}
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    background-color: #1a1a1a; /* Fundo de fallback um pouco mais claro que preto puro */
+    color: #E0E0E0; /* Texto padrão cinza claro para bom contraste */
 
-body {
-    font-family: 'Poppins', sans-serif;
-    background: var(--cor-fundo);
-    color: var(--cor-texto-principal);
+    /* Configuração do gradiente animado com branco suavizado */
+    background: linear-gradient(
+        135deg,
+        #000000 15%, /* Preto */
+        #2c2c2c 30%, /* Cinza escuro */
+        #666666 50%, /* Cinza médio (substitui o branco forte) */
+        #2c2c2c 70%, /* Cinza escuro */
+        #000000 85%  /* Preto */
+    );
+    background-size: 500% 500%; /* Ajustado um pouco o tamanho, pode experimentar */
+    animation: gradientAnimation 28s ease infinite; /* Duração um pouco maior para movimento mais suave */
+
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    align-items: flex-start; /* Alinha ao topo para ver o scroll em telas menores */
     min-height: 100vh;
     padding: 20px;
-    overflow-y: auto; /* Permite scroll se o conteúdo for maior que a tela */
+    box-sizing: border-box;
+    overflow-x: hidden;
+}
+
+/* Animação do gradiente */
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
 .container {
-    background-color: var(--cor-container);
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-    text-align: center;
     width: 100%;
-    max-width: 400px; /* Largura máxima para não ficar muito largo no desktop */
-    animation: fadeIn 0.8s ease-out;
+    max-width: 450px;
+    text-align: center;
+    position: relative;
+    z-index: 1;
 }
 
-@keyframes fadeIn {
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.profile-name {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 35px;
+    animation: fadeInDown 0.8s ease-out forwards;
+    color: #FFFFFF; /* Mantém o nome em branco puro para destaque */
+    /* Sombra ajustada para melhor legibilidade sobre os cinzas */
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.8), 0px 0px 4px rgba(0, 0, 0, 1);
+}
+
+.social-links ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+@keyframes fadeInUpItem {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-header {
-    margin-bottom: 30px;
+.social-links li {
+    margin-bottom: 18px;
+    opacity: 0;
+    animation: fadeInUpItem 0.5s ease-out forwards;
 }
 
-.profile-pic {
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 3px solid var(--cor-destaque);
-    margin-bottom: 15px;
-    box-shadow: 0 0 15px var(--cor-destaque);
-    transition: transform 0.3s ease;
-}
+.social-links li:nth-child(1) { animation-delay: 0.2s; }
+.social-links li:nth-child(2) { animation-delay: 0.3s; }
+.social-links li:nth-child(3) { animation-delay: 0.4s; }
+.social-links li:nth-child(4) { animation-delay: 0.5s; }
+.social-links li:nth-child(5) { animation-delay: 0.6s; }
+.social-links li:nth-child(6) { animation-delay: 0.7s; }
+/* Adicione mais nth-child se tiver mais links */
 
-.profile-pic:hover {
-    transform: scale(1.1) rotate(5deg);
-}
 
-h1 {
-    font-size: 1.8em;
-    margin-bottom: 5px;
-    color: var(--cor-texto-principal);
-    font-weight: 700;
-}
-
-.slogan {
-    font-size: 1em;
-    color: var(--cor-texto-secundario);
-    font-weight: 300;
-}
-
-.links {
-    display: flex;
-    flex-direction: column;
-    gap: 15px; /* Espaçamento entre os links */
-}
-
-.link-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px 20px;
+.social-links a {
+    display: block;
+    padding: 18px 25px;
+    /* Os botões continuarão com fundo branco para contraste,
+       ou podemos mudar para um cinza bem claro se preferir */
+    background-color: #F0F0F0; /* Branco levemente acinzentado para os botões */
+    color: #181818; /* Texto do botão mais escuro para bom contraste */
     text-decoration: none;
-    color: #ffffff; /* Cor do texto dos botões por padrão */
-    border-radius: 8px;
-    font-size: 1.1em;
     font-weight: 600;
-    transition: transform 0.2s ease-out, background-color 0.3s, background 0.3s, box-shadow 0.3s;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    position: relative; /* Para pseudo-elementos de brilho se necessário */
-    overflow: hidden; /* Para efeitos de background */
+    border-radius: 10px;
+    border: 2px solid #D0D0D0; /* Borda um pouco mais visível */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15); /* Sombra um pouco mais sutil */
+    transition: all 0.25s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.link-item i {
-    margin-right: 10px;
-    font-size: 1.3em;
-}
-
-.link-item:hover {
+.social-links a:hover,
+.social-links a:focus {
+    background-color: #DCDCDC; /* Cinza mais escuro no hover */
+    border-color: #BBBBBB;
     transform: translateY(-3px) scale(1.03);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    outline: none;
+    color: #000000; /* Mantém preto para o texto no hover */
 }
 
-/* Cores específicas dos botões */
-.link-item.instagram { background: var(--cor-instagram); }
-.link-item.tiktok    { background: var(--cor-tiktok); color: var(--cor-tiktok-texto); }
-.link-item.youtube   { background: var(--cor-youtube); }
-.link-item.twitter   { background: var(--cor-twitter); }
-.link-item.whatsapp  { background: var(--cor-whatsapp); }
-.link-item.linkedin  { background: var(--cor-linkedin); }
-.link-item.generico  { background: var(--cor-generico); }
-
-/* Efeito de brilho sutil no hover para botões com cores sólidas */
-.link-item:not(.instagram):hover {
-    filter: brightness(1.1);
-}
-.link-item.instagram:hover { /* Instagram já tem gradiente, então um leve escurecimento */
-    filter: brightness(0.95);
+.social-links a:active {
+    transform: translateY(-1px) scale(1.01);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.18);
 }
 
-
-footer {
-    margin-top: 30px;
-    font-size: 0.8em;
-    color: var(--cor-texto-secundario);
-}
-
-/* Responsividade para telas menores */
-@media (max-width: 480px) {
-    .container {
-        padding: 20px;
-        margin: 0 10px; /* Adiciona margem nas laterais em telas muito pequenas */
-    }
-
-    h1 {
-        font-size: 1.6em;
-    }
-
-    .profile-pic {
-        width: 80px;
-        height: 80px;
-    }
-
-    .link-item {
-        padding: 12px 15px;
-        font-size: 1em;
-    }
-
-    .link-item i {
-        font-size: 1.2em;
-    }
+.footer {
+    margin-top: 50px;
+    font-size: 0.85em;
+    color: #B0B0B0; /* Rodapé com cinza claro */
+    opacity: 0;
+    animation: fadeInUpItem 0.5s ease-out 1s forwards;
+    text-shadow: 0px 0px 6px rgba(0, 0, 0, 0.75);
 }

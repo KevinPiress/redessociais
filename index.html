@@ -1,45 +1,36 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meus Links</title>
+    <title>Minhas Redes Sociais</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Importando Font Awesome para ícones -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Importando uma fonte legal do Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
     <div class="container">
-        <header>
-            <h1>kevinprsss</h1>
-        </header>
+        <div class="profile-name">
+            Kevin
+        </div>
 
-        <main class="links">
-            <a href="https://www.instagram.com/kevinprsss/" target="_blank" class="link-item instagram">
-                <i class="fab fa-instagram"></i> Instagram
-            </a>
-            <a href="https://www.tiktok.com/@kevindkk" target="_blank" class="link-item tiktok">
-                <i class="fab fa-tiktok"></i> TikTok
-            </a>
-            <a href="#" target="_blank" class="link-item youtube">
-                <i class="fab fa-youtube"></i> YouTube - EMBREVE
-            </a>
-            <a href="#" target="_blank" class="link-item linkedin">
-                <i class="fab fa-linkedin-in"></i> LinkedIn - EMBREVE
-            </a>
-            <!-- Adicione mais links conforme necessário -->
-            <!-- Exemplo:
-            <a href="https://seu-blog.com" target="_blank" class="link-item generico">
-                <i class="fas fa-globe"></i> Meu Blog
-            </a>
-            -->
-        </main>
+        <nav class="social-links">
+            <ul>
+                <!-- MANTENHA SEUS LINKS PERSONALIZADOS AQUI -->
+                <li><a href="https://www.instagram.com/kevinprsss/" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                <li><a href="https://www.tiktok.com/@kevindkk" target="_blank" rel="noopener noreferrer">TikTok</a></li>
+                <li><a href="https://youtube.com/seu_canal_aqui" target="_blank" rel="noopener noreferrer">YouTube - Em Breve</a></li>
+                <li><a href="https://caminhodafe.netlify.app/?fbclid=PAZXh0bgNhZW0CMTEAAaee_DLxYXAZi_BQg-85x4dHQ7QP1yb02A10GXzk68eEUmZ2diz5R4_SntwNcg_aem_P43ZBSLMfI_dr2cgccBajA" target="_blank" rel="noopener noreferrer">Meu Site</a></li>
+            </ul>
+        </nav>
 
-        <footer>
-            <p>© 2025</p>
-        </footer>
+        <div class="footer">
+            © <span id="year"></span> Todos os direitos reservados.
+        </div>
     </div>
+
+    <script>
+        document.getElementById("year").textContent = new Date().getFullYear();
+    </script>
+
 </body>
 </html>
