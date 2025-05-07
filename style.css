@@ -1,0 +1,166 @@
+:root {
+    --cor-fundo: #1a1a2e; /* Azul noite escuro */
+    --cor-container: #16213e; /* Azul um pouco mais claro */
+    --cor-texto-principal: #e0e0e0; /* Cinza claro */
+    --cor-texto-secundario: #a0a0a0; /* Cinza mais escuro */
+    --cor-destaque: #00c6ff; /* Azul ciano vibrante para botões */
+    --cor-destaque-hover: #00a5dd; /* Tom mais escuro do ciano para hover */
+
+    /* Cores específicas para redes (opcional, pode usar --cor-destaque para todos) */
+    --cor-instagram: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+    --cor-tiktok: #000000; /* Preto TikTok */
+    --cor-tiktok-texto: #ffffff;
+    --cor-youtube: #FF0000; /* Vermelho YouTube */
+    --cor-twitter: #1DA1F2; /* Azul Twitter */
+    --cor-whatsapp: #25D366; /* Verde WhatsApp */
+    --cor-linkedin: #0077B5; /* Azul LinkedIn */
+    --cor-generico: var(--cor-destaque);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--cor-fundo);
+    color: var(--cor-texto-principal);
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Alinha ao topo para ver o scroll em telas menores */
+    min-height: 100vh;
+    padding: 20px;
+    overflow-y: auto; /* Permite scroll se o conteúdo for maior que a tela */
+}
+
+.container {
+    background-color: var(--cor-container);
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    width: 100%;
+    max-width: 400px; /* Largura máxima para não ficar muito largo no desktop */
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+header {
+    margin-bottom: 30px;
+}
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--cor-destaque);
+    margin-bottom: 15px;
+    box-shadow: 0 0 15px var(--cor-destaque);
+    transition: transform 0.3s ease;
+}
+
+.profile-pic:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+h1 {
+    font-size: 1.8em;
+    margin-bottom: 5px;
+    color: var(--cor-texto-principal);
+    font-weight: 700;
+}
+
+.slogan {
+    font-size: 1em;
+    color: var(--cor-texto-secundario);
+    font-weight: 300;
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px; /* Espaçamento entre os links */
+}
+
+.link-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 20px;
+    text-decoration: none;
+    color: #ffffff; /* Cor do texto dos botões por padrão */
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: 600;
+    transition: transform 0.2s ease-out, background-color 0.3s, background 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    position: relative; /* Para pseudo-elementos de brilho se necessário */
+    overflow: hidden; /* Para efeitos de background */
+}
+
+.link-item i {
+    margin-right: 10px;
+    font-size: 1.3em;
+}
+
+.link-item:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+/* Cores específicas dos botões */
+.link-item.instagram { background: var(--cor-instagram); }
+.link-item.tiktok    { background: var(--cor-tiktok); color: var(--cor-tiktok-texto); }
+.link-item.youtube   { background: var(--cor-youtube); }
+.link-item.twitter   { background: var(--cor-twitter); }
+.link-item.whatsapp  { background: var(--cor-whatsapp); }
+.link-item.linkedin  { background: var(--cor-linkedin); }
+.link-item.generico  { background: var(--cor-generico); }
+
+/* Efeito de brilho sutil no hover para botões com cores sólidas */
+.link-item:not(.instagram):hover {
+    filter: brightness(1.1);
+}
+.link-item.instagram:hover { /* Instagram já tem gradiente, então um leve escurecimento */
+    filter: brightness(0.95);
+}
+
+
+footer {
+    margin-top: 30px;
+    font-size: 0.8em;
+    color: var(--cor-texto-secundario);
+}
+
+/* Responsividade para telas menores */
+@media (max-width: 480px) {
+    .container {
+        padding: 20px;
+        margin: 0 10px; /* Adiciona margem nas laterais em telas muito pequenas */
+    }
+
+    h1 {
+        font-size: 1.6em;
+    }
+
+    .profile-pic {
+        width: 80px;
+        height: 80px;
+    }
+
+    .link-item {
+        padding: 12px 15px;
+        font-size: 1em;
+    }
+
+    .link-item i {
+        font-size: 1.2em;
+    }
+}
