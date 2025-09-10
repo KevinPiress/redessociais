@@ -96,7 +96,7 @@ body {
 .social-links li:nth-child(4) { animation-delay: 0.5s; }
 .social-links li:nth-child(5) { animation-delay: 0.6s; }
 .social-links li:nth-child(6) { animation-delay: 0.7s; }
-/* Adicione mais nth-child se tiver mais links */
+
 
 
 .social-links a {
